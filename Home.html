@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coal Mining Carbon Management</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: hsl(0, 22%, 47%);
+            overflow-x: hidden; /* Prevents horizontal scroll */
+            color: #fff; /* Default text color */
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://insideclimatenews.org/wp-content/uploads/2022/03/coal-mine_matthew-horwood-getty-scaled.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            margin-top: 10px;
+            font-size: 4rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        /* Main Section */
+        main {
+            margin-top: 80px; /* Space for fixed navbar */
+            padding: 40px;
+            background-color: #cddcd1;
+            border-radius: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-y: auto; /* Allows scrolling when content overflows */
+        }
+
+        .services {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 2rem;
+            line-height: 1.6;
+
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            background-color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: #f1f1f1;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center; /* Centers the cards horizontally */
+            padding: 0 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+       /* Footer */
+        footer {
+            background-color: #333; /* Background color of the footer */
+            color: white; /* Text color */
+            padding: 10px 0; /* Padding for top and bottom */
+            position: fixed; /* Fixes the footer to the bottom of the viewport */
+            width: 100%; /* Makes the footer span the full width of the viewport */
+            bottom: 0; /* Positions the footer at the bottom */
+            left: 0; /* Aligns the footer to the left edge */
+            text-align: center; /* Centers the text inside the footer */
+            font-size: 14px; /* Font size for the text */
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+        }
+
+        footer p {
+            margin: 0; /* Removes default margin */
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p.subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>COAL MITRA</h1>
+        <ul>
+            <li><a href="trial1.html">Home</a></li>
+            <li><a href="form1.html">Carbon Estimations</a></li>
+            <li><a href="statastics.html">Real Time Data Visualization</a></li>
+            <li><a href="blog.html">Sustainable Goals</a></li>
+            <li><a href="last.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>COAL MITRA</h2>
+            <p class="subtitle">Managing Carbon Footprints in Coal Mining</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section class="services">
+            <h2>Our Services</h2>
+            <div class="services-container">
+                <div class="card">
+                    <div class="card-image" style="background-image: url('https://framerusercontent.com/images/NgJydfhrmkY1FJ0hv2UzhsBtHO0.jpg');"></div>
+                    <div class="card-content">
+                        <h3>Mathematical Tools</h3>
+                        <p style="color:black">Explore mathematical approaches for analyzing carbon emissions and carbon sinks.</p>
+                        <a href="form1.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background-image: url('https://images.pexels.com/photos/46801/coal-briquette-black-46801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
+                    <div class="card-content">
+                        <h3>Emissions from Coal Mines in India</h3>
+                        <p style="color:black">Click here to visualize carbon emissions in coal mines in India.</p>
+                        <a href="mines.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background-image: url('https://research.aimultiple.com/wp-content/uploads/2022/09/Example-of-how-carbon-footprint-calculators-visualize-data-612x383.png.webp');"></div>
+                    <div class="card-content">
+                        <h3>Real-Time Visualization Analysis</h3>
+                        <p style="color:black">Review the statistics and tools for estimating emissions.</p>
+                        <a href="statastics.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwejnsbefsmsbL01rF5B3C2bxRZKusqtyQ8Q&s');"></div>
+                    <div class="card-content">
+                        <h3>Sustainable Goals and Innovations</h3>
+                        <p style="color:black">Understand the latest trends and insights in the coal mining industry.</p>
+                        <a href="blog.html" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Emissions Management | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

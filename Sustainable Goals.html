@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Emissions in Coal Mines</title>
+    <style>
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* Fills the navbar horizontally */
+            overflow: hidden;
+            margin: 0;
+            text-align: left;
+            white-space: nowrap;
+            z-index: 1000; /* Ensures it stays above other content */
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: larger;
+            margin: 0;
+            padding: 0;
+            background: 
+                linear-gradient(270deg, rgba(27, 27, 27, 0.7), rgba(51, 51, 51, 0.7), rgba(75, 75, 75, 0.7), rgba(102, 102, 102, 0.7)), 
+                url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtGJxKWtvP1N2MQzA70YxcManM3BPFnSws4Q&s') no-repeat center center fixed;
+            background-size: 100% 100%, cover;
+            background-attachment: fixed;
+            color: #333;
+
+            /* Adding the animation */
+            animation: backgroundAnimation 20s ease infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%, 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%, 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%, 0% 50%;
+            }
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 48px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Main Section */
+        main {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -30px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            color: #000;
+            font-size: 32px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Info Box */
+        .info-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info-box h3 {
+            color: #555;
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        /* Emission Section */
+        .emission-box {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .emission-box h2 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #555;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+   
+ 
+.button {
+    top: 3em;
+  padding: 1em 2em;
+  background-color: rgb(155, 167, 235);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: black;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #f9191;
+  text-decoration: none; /* Remove underline from the link */
+  display: inline-block; /* Ensure it's treated like a button */
+}
+
+.button:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #2c9caf;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+.button:hover::before {
+  width: 250%;
+}
+
+
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 36px;
+            }
+
+            .content-section h2 {
+                font-size: 28px;
+            }
+
+            .emission-box h2 {
+                font-size: 28px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <p></p>
+        <ul>
+            <li><a href="trial1.html">Home</a></li>
+            <li><a href="emissionest.html">Carbon Estimations</a></li>
+            
+            <li><a href="statastics.html">Real Time Data Visulization</a></li>
+            <li><a href="blog.html">Sustainable Goals</a></li>
+        
+            <li><a href="last.html">Contact Us</a></li>
+        </ul>
+    </nav>
+  
+
+    <!-- Header Section -->
+    <header>
+        <h1>Carbon Emissions in Coal Mines</h1>
+        <p>Understanding and Managing Carbon Footprints for a Sustainable Future</p>
+    </header>
+   
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <main>
+
+            <!-- Introduction Section -->
+            <section class="content-section">
+                <h2>What is Carbon Footprint?</h2>
+                <p>
+                    A carbon footprint refers to the total amount of greenhouse gases (GHGs) produced directly or indirectly by human activities, expressed in equivalent tons of carbon dioxide (CO2e). In coal mining, the carbon footprint is mainly driven by the emissions generated from the extraction, transportation, and combustion of coal.
+                </p>
+            </section>
+
+            <!-- Emission Details Section -->
+            <section class="content-section">
+                <h2>Sources of Carbon Emissions in Coal Mining</h2>
+                <div class="info-box">
+                    <h3>Key Contributors to Carbon Emissions in Coal Mines:</h3>
+                    <ul>
+                        <li>Fugitive emissions from coal seams</li>
+                        <li>Combustion of fuels in mining equipment</li>
+                        <li>Electricity consumption during mining operations</li>
+                        <li>Transportation of coal to various facilities</li>
+                        <li>Post-mining land-use changes and methane leaks</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Carbon Emission Impact Section -->
+            <section class="content-section emission-box">
+                <h2>Impact of Carbon Emissions</h2>
+                <p>
+                    Carbon emissions from coal mining contribute significantly to global climate change. These emissions exacerbate the greenhouse effect, leading to rising global temperatures, extreme weather events, and melting polar ice caps. Reducing emissions is vital for a sustainable future.
+                </p>
+            </section>
+
+            <!-- Strategies to Reduce Carbon Footprint Section -->
+            <section class="content-section">
+                <h2>Strategies for Reducing Carbon Footprint</h2>
+                <p>
+                    Various strategies can help coal mining operations minimize their carbon footprint:
+                </p>
+                <div class="info-box">
+                    <h3>Key Reduction Strategies:</h3>
+                    <ul>
+                        <li>Implementing clean coal technologies</li>
+                        <li>Adopting renewable energy sources for operations</li>
+                        <li>Improving energy efficiency and reducing fuel use</li>
+                        <li>Capturing and utilizing methane emissions</li>
+                        <li>Investing in reforestation and carbon offset programs</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Carbon Management in Coal Mines | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

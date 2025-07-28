@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissions Dashboard</title>
+    <style>
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            text-align: left;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+            background: linear-gradient(270deg, #ffafbd, #ffc3a0, #ff9a9e, #ffdde1);
+            background-size: 800% 800%;
+            animation: gradientAnimation 12s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            margin-top: 100px; /* Adjust this value to move the header down */
+            padding: 25px;
+            font-size: 75px;
+            color: #333;
+        }
+
+        /* Container for Charts */
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+        .chart-box {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>Emissions Dashboard</h2>
+        <ul>
+            <li><a href="trial1.html">Home</a></li>
+            <li><a href="emissionest.html">Carbon Estimations</a></li>
+            <li><a href="statastics.html">Real Time Data Visualization</a></li>
+            <li><a href="blog.html">Sustainable Goals</a></li>
+            <li><a href="last.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <h1>Emissions Overview</h1>
+
+    <!-- Container for Charts -->
+    <div class="chart-container">
+        <!-- Afforestation Efforts Bar Chart -->
+        <div class="chart-box">
+            <h2>Afforestation Efforts</h2>
+            <canvas id="afforestationChart"></canvas>
+        </div>
+
+        <!-- Renewable Energy Potential Areas Pie Chart -->
+        <div class="chart-box">
+            <h2>Renewable Energy Potential Areas</h2>
+            <canvas id="renewableEnergyChart"></canvas>
+        </div>
+
+        <!-- Current Mining Data Line Chart -->
+        <div class="chart-box">
+            <h2>Current Mining Data</h2>
+            <canvas id="miningChart"></canvas>
+        </div>
+
+        <!-- CO2 Emissions Bar Chart -->
+        <div class="chart-box">
+            <h2>CO2 Emissions</h2>
+            <canvas id="co2Chart"></canvas>
+        </div>
+
+        <!-- SO2 Emissions Line Chart -->
+        <div class="chart-box">
+            <h2>SO2 Emissions</h2>
+            <canvas id="so2Chart"></canvas>
+        </div>
+
+        <!-- PO2 Emissions Line Chart -->
+        <div class="chart-box">
+            <h2>PO2 Emissions</h2>
+            <canvas id="po2Chart"></canvas>
+        </div>
+
+        <!-- Emissions Distribution Pie Chart -->
+        <div class="chart-box">
+            <h2>Emissions Distribution</h2>
+            <canvas id="emissionsPieChart"></canvas>
+        </div>
+
+        <!-- Emission Trends Line Chart -->
+        <div class="chart-box">
+            <h2>Emission Trends</h2>
+            <canvas id="trendChart"></canvas>
+        </div>
+
+        <!-- Emission Comparison Bar Chart -->
+        <div class="chart-box">
+            <h2>Emission Comparison</h2>
+            <canvas id="comparisonChart"></canvas>
+        </div>
+
+        <!-- Monthly Emissions Radar Chart -->
+        <div class="chart-box">
+            <h2>Monthly Emissions</h2>
+            <canvas id="radarChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Emissions Management | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Afforestation Efforts Bar Chart
+        const afforestationCtx = document.getElementById('afforestationChart').getContext('2d');
+        new Chart(afforestationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Hectares Reforested',
+                    data: [150, 200, 180, 220, 250],
+                    backgroundColor: 'rgba(75, 192, 75, 0.6)',
+                    borderColor: 'rgba(75, 192, 75, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: { duration: 2000 },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Renewable Energy Potential Areas Pie Chart
+        const renewableEnergyCtx = document.getElementById('renewableEnergyChart').getContext('2d');
+        new Chart(renewableEnergyCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Wind', 'Solar', 'Hydro', 'Biomass'],
+                datasets: [{
+                    label: 'Renewable Energy Potential (%)',
+                    data: [40, 35, 15, 10],
+                    backgroundColor: [
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: { duration: 2000 },
+                responsive: true
+            }
+        });
+
+        // Current Mining Data Line Chart
+        const miningCtx = document.getElementById('miningChart').getContext('2d');
+        new Chart(miningCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Mining Output (tons)',
+                    data: [500, 600, 550, 700, 800, 750, 650, 700, 680, 720, 690, 710],
+                    backgroundColor: 'rgba(153, 102, 255, 0.4)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // CO2 Emissions Bar Chart
+        const co2Ctx = document.getElementById('co2Chart').getContext('2d');
+        new Chart(co2Ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'CO2 Emissions (tons)',
+                    data: [100, 120, 115, 140, 160],
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // SO2 Emissions Line Chart
+        const so2Ctx = document.getElementById('so2Chart').getContext('2d');
+        new Chart(so2Ctx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'SO2 Emissions (tons)',
+                    data: [30, 40, 35, 45, 50],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // PO2 Emissions Line Chart
+        const po2Ctx = document.getElementById('po2Chart').getContext('2d');
+        new Chart(po2Ctx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'PO2 Emissions (tons)',
+                    data: [20, 25, 22, 30, 35],
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Emissions Distribution Pie Chart
+        const emissionsPieCtx = document.getElementById('emissionsPieChart').getContext('2d');
+        new Chart(emissionsPieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['CO2', 'SO2', 'PO2'],
+                datasets: [{
+                    data: [70, 20, 10],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                animation: { duration: 2000 }
+            }
+        });
+
+        // Emission Trends Line Chart
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Emission Trends (tons)',
+                    data: [170, 215, 200, 250, 265],
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Emission Comparison Bar Chart
+        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+        new Chart(comparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: ['CO2', 'SO2', 'PO2'],
+                datasets: [{
+                    label: '2023',
+                    data: [170, 45, 30],
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 2
+                }, {
+                    label: '2024',
+                    data: [180, 50, 35],
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Monthly Emissions Radar Chart
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: '2024 Emissions (tons)',
+                    data: [15, 10, 12, 8, 6, 5, 10, 12, 15, 20, 18, 22],
+                    backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        angleLines: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 25
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
